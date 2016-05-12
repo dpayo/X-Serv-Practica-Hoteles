@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<data>
+  <user name= "Luis">
+    <hotel id= "17038" >
+      <name>Innside Madrid Suecia</name>
+      <url>http://www.esmadrid.com/alojamientos/innside-madrid-suecia</url>
+      <address>Marqués de Casa Riera, 4</address>
+      <source>http://www.esmadrid.com/sites/default/files/recursosturisticos/alojamientos/15_1416309691.897.jpg</source>
+      <type>Hoteles</type>
+      <stars>4 estrellas</stars>
+    </hotel>
+
+    <hotel id="17166">
+      <name>Hostal la Fontana </name>
+      <url>http://www.esmadrid.com/alojamientos/hostal-la-fontana</url>
+      <address>de Valverde , 6, 1º</address>
+      <source>http://www.esmadrid.com/sites/default/files/recursosturisticos/alojamientos/fontana_1396517722.454.jpg</source>
+      <type>Hoteles</type>
+      <stars>2 estrellas</stars>
+    </hotel>
+
+  </user>
+</data>

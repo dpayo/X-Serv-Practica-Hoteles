@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<data>
+  <user name= "Diego">
+    <hotel id= "17032" >
+      <name>Hotel Indigo</name>
+      <url>http://www.esmadrid.com/alojamientos/hotel-indigo</url>
+      <address>Silva, 6</address>
+      <source>http://www.esmadrid.com/sites/default/files/recursosturisticos/alojamientos/hotelindigo_1400075911.219.jpg</source>
+      <type>Hoteles</type>
+      <stars>4 estrellas</stars>
+    </hotel>
+
+    <hotel id="17024">
+      <name>Novotel Madrid Center</name>
+      <url>http://www.esmadrid.com/alojamientos/novotel-madrid-center</url>
+      <address>O´Donnell, 53</address>
+      <source>http://www.esmadrid.com/sites/default/files/recursosturisticos/alojamientos/novotel1.jpg</source>
+      <type>Hoteles</type>
+      <stars>4 estrellas</stars>
+    </hotel>
+
+  </user>
+</data>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<data>
+  <user name= "Diego">
+    <hotel id= "17037" >
+      <name>Be Live City Airport Madrid Diana</name>
+      <url>http://www.esmadrid.com/alojamientos/be-live-city-airport-madrid-diana</url>
+      <address>del Galeón, 27</address>
+      <source>http://www.esmadrid.com/sites/default/files/recursosturisticos/alojamientos/dia1_1417093007.145.jpg</source>
+      <type>Hoteles</type>
+      <stars>4 estrellas</stars>
+    </hotel>
+
+  </user>
+</data>

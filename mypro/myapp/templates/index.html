@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <style>
+      body{
+        background-color: {{ color }}
+      }
+      body{
+        font-size: {{size}}
+      }
+    </style>
+  </head>
+  <body>
+
+
+<img src="http://datos.madrid.es/FWProjects/egob/nuevoMadrid/secciones/DatosAbiertos_1400X351.png"></img>
+<div>
+{% if user %}
+  <p> You're inside  {{user }}</p>
+  <a href='/logout/'>Logout</a><br>
+{% else %}
+    <h3>Login</h3>
+    <form action="/login" method="post" accept-charset="utf-8">
+      {% csrf_token %}
+      <label for="username">Username</label><input type="text" name="username" value="" />
+      <label for="password">Password</label><input type="password" name="password" value=""  />
+      <p><input type="submit" value="Login →"></p>
+  </form>
+{% endif%}
+</div>
+  <div id= 'pagusers'>
+    <ul>
+      {% for h in listausers %}
+        {% if h.title == condicion %}
+          <li><a href= "{{ h.user }}">Pagina de {{h.id}}</a></li>
+        {% else %}
+          <li><a href= "{{ h.user }}">{{h.title}}</a></li>
+        {% endif %}
+      {% endfor %}
+  </ul>
+</div>
+  <div id="listhotels">
+    <ul>
+      {% for h in lista %}
+          <li><a href= "{{ h.url }}">{{h.name}}</a></li>
+          <li>{{ h.address }}</li>
+            <li>{{ h.id }}</li>
+          {% if h.source != condicion %}
+            <img src="{{ h.source }}"></img>
+          {% else %}
+              <li> No hay imagenes para mostrar </li>
+          {% endif %}
+
+          <li><a href="info">Más información </li>
+      {% endfor %}
+  </ul>
+  </div>
+    <a href="more"> Más </a>
+
+
+  </body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+
+  </head>
+  <body>
+    <img src="view-source:http://datos.madrid.es/FWProjects/egob/nuevoMadrid/secciones/DatosAbiertos_1400X351.png"></img>
+    
+    <form action="" method="post">
+      {% csrf_token %}
+      <h3>Filtra por ( Hoteles,Albergues,Apartahoteles,Hostales,Residencias universitarias,Pensiones...)</h3>
+      <input type="text" name="filtrotipo" value="" />
+      <br/>
+      <h3> Filtra por las estrellas (ej: 4 estrellas, 1 llave o 3 estrellas Gran Lujo) </h3>
+      <input type="text" name="filtrostars" value="" />
+        <br/>
+
+      <input type="submit" value="Enviar" />
+        <br/>
+    </form>
+    {% for h in lista %}
+          <li><a href= "{{ h.url }}">{{ h.name}}</a></li>
+
+    {% endfor %}
+
+  </body>
+</html>
