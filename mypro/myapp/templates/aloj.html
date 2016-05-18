@@ -2,27 +2,54 @@
 <html>
   <head>
     <meta charset='utf-8' />
+      {% load staticfiles %}
+      <link rel="stylesheet"  type="text/css" href="{% static 'css/style.css' %}">
+      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+      <style>
+        body{
+          background-color: {{ color }}
+        }
+        body{
+          font-size: {{size}}
+        }
 
+      </style>
+    </head>
   </head>
   <body>
-    <img src="view-source:http://datos.madrid.es/FWProjects/egob/nuevoMadrid/secciones/DatosAbiertos_1400X351.png"></img>
-    
-    <form action="" method="post">
-      {% csrf_token %}
-      <h3>Filtra por ( Hoteles,Albergues,Apartahoteles,Hostales,Residencias universitarias,Pensiones...)</h3>
-      <input type="text" name="filtrotipo" value="" />
-      <br/>
-      <h3> Filtra por las estrellas (ej: 4 estrellas, 1 llave o 3 estrellas Gran Lujo) </h3>
-      <input type="text" name="filtrostars" value="" />
-        <br/>
+    <div id="header">
+      <img src="http://datos.madrid.es/FWProjects/egob/nuevoMadrid/secciones/DatosAbiertos_1400X351.png"></img>
+    </div>
 
-      <input type="submit" value="Enviar" />
-        <br/>
-    </form>
-    {% for h in lista %}
-          <li><a href= "{{ h.url }}">{{ h.name}}</a></li>
-
-    {% endfor %}
-
+    <div class="row">
+        <div class="col-md-6">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <form action="" method="post">
+                {% csrf_token %}
+                <h3>Filtra por ( Hoteles,Albergues,Apartahoteles,Hostales,Residencias universitarias,Pensiones...)</h3>
+                <input type="text" name="filtrotipo" value="" />
+                <br/>
+                <h3> Filtra por las estrellas (ej: 4 estrellas, 1 llave o 3 estrellas Gran Lujo) </h3>
+                <input type="text" name="filtrostars" value="" />
+                <br/>
+                <input class="btn btn-primary" type="submit" value="Enviar" />
+                <br/>
+              </form>
+            </div>
+          </div>
+        </div>
+      <div class="col-md-6">
+        <div class="panel panel-default">
+          <div class="panel-body scrollable height-25em">
+            <h3>Filtrando por : {{ stars }} {{ tipo }}</h3>
+            {% for h in lista %}
+              <li><a href= "{{ h.url }}">{{ h.name}}</a></li>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+  </div>
   </body>
 </html>

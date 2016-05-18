@@ -29,6 +29,7 @@ class myContentHandler(ContentHandler):
         self.dir=""
         self.img=""
         self.tipo=""
+        self.body=""
         self.recimg=None
         self.is_star=False;
         self.is_img=False;
@@ -37,7 +38,7 @@ class myContentHandler(ContentHandler):
 
         self.theContent=name
         if name =='basicData':
-            self.record = Hotel(name="", url="", address="",source="",stars="",tipo="")
+            self.record = Hotel(name="", url="",body="", address="",source="",stars="",tipo="")
 
         if name =="item":
             if attrs['name']== "SubCategoria":
@@ -51,6 +52,10 @@ class myContentHandler(ContentHandler):
                 self.recimg=Image(hid=0,img=self.record,url="")
 
     def endElement (self, name):
+            if self.theContent=='body':
+                self.record.body=self.body;
+                self.record.save()
+
             if self.theContent=='item' and self.is_star:
                 self.record.stars=self.tipo
                 self.record.save();
@@ -89,6 +94,9 @@ class myContentHandler(ContentHandler):
 
             #record.save()
     def characters (self, chars):
+        if self.theContent == 'body':
+            self.body=chars
+            print self.body
         if self.theContent == 'title':
             self.titulo=chars
 

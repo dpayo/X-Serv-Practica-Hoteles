@@ -23,9 +23,13 @@ urlpatterns = [
     url(r'^$',views.main),
     url(r'^more$',views.more),
     url(r'^alojamientos/(\d+)$',views.show_aloj_id),
+    url(r'^alojamientos/(\d+)/xmlingles$',views.show_aloj_id_ingles),
+    url(r'^alojamientos/(\d+)/xmlfrances$',views.show_aloj_id_frances),
     url(r'^alojamientos$',views.show_aloj),
     url(r'^login', 'django.contrib.auth.views.login'),
     url(r'^logout', 'django.contrib.auth.views.logout', {'next_page': '/'}),
     url(r'^(.*)/xml$',views.show_userxml),
-    url(r'^(.*)$',views.show_hotels)
+    url(r'^(.*)$',views.show_hotels),
+    
+
 ]

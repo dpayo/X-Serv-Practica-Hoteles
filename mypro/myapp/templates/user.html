@@ -2,6 +2,10 @@
 <html>
   <head>
     <meta charset='utf-8' />
+    {% load staticfiles %}
+    <link rel="stylesheet"  type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
   <style>
     body{
       background-color: {{ color }}
@@ -13,28 +17,42 @@
   </style>
   </head>
   <body>
-    <img src="view-source:http://datos.madrid.es/FWProjects/egob/nuevoMadrid/secciones/DatosAbiertos_1400X351.png"></img>
-    <div>
-    <h2> {{ usuario }}</h2>
-    {% if user.is_authenticated and usuario == request.user.username %}
-      <h3> You are inside {{ user }}</h3>
+    <div id="header">
+      <img src="http://datos.madrid.es/FWProjects/egob/nuevoMadrid/secciones/DatosAbiertos_1400X351.png"></img>
+    </div>
+    <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+      <h2> {{ usuario }}</h2>
+      {% if user.is_authenticated and usuario == request.user.username %}
+        <h3> You are inside {{ user }}</h3>
 
-      <form action="" method="post" accept-charset="utf-8">
-      {% csrf_token %}
-        Write a background-color
-        <input type="text" name="css" value=""></input>
-          Write a font size font
-        <input type="text" name="size" value=""></input>
-        <p><input type="submit" value="Send →"></p>
+        <form action="" method="post" accept-charset="utf-8">
+          {% csrf_token %}
+          Escribe un color de fondo
+          <input type="text" name="css" value=""></input>
+          Escribe un tamaño de la fuente
+          <input type="text" name="size" value=""></input>
+          Escribe un titulo para la página
+          <input type="text" name="titulo" value=""></input>
+          <p><input type="submit" value="Send →"></p>
       </form>
     {% endif %}
-    {% for h in lista %}
-        <li><a href= "{{ h.hotel.url }}">{{h.hotel.name}}</a></li>
-        <li>{{ h.address }}</li>
-        <img src="{{ h.hotel.source }}"></img>
-        <li> {{ h.date }}</li>
-        <li><a href="info">Más información </li>
-    {% endfor %}
-
+    </div>
+  </div>
+  <div class="row">
+    <div class"col-md-12 well well-sm">
+      {% for h in lista %}
+          <li><a href= "{{ h.hotel.url }}">{{h.hotel.name}}</a></li>
+          <li>{{ h.hotel.address }}</li>
+          {% if h.hotel.source != "" %}
+            <img class="thumbnail" src="{{ h.hotel.source }}"></img>
+          {% endif %}
+          <li> {{ h.date }}</li>
+          <li><a href="/alojamientos/{{ h.hotel.id }}">Más información </li>
+      {% endfor %}
+    </div>
+  </div>
+</div>
   </body>
 </html>

@@ -6,6 +6,7 @@ from django.db import models
 class Hotel (models.Model):
     name=models.CharField(max_length=200,default="")
     url = models.URLField(max_length=300,default="")
+    body=models.TextField(max_length=800,default="")
     address= models.CharField(max_length=200,default="")
     source= models.URLField(max_length=300,default="")
     stars =models.CharField(max_length=300,default="")
