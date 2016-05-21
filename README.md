@@ -12,4 +12,4 @@ Repositorio para la práctica final de SARO/SAT. Curso 2015-2016
 * Diego Payo Martínez
 * Grado en Tecnologías de la Telecomunicación
 * dpayo ( cuenta Linux lab. y cuenta Github)
-* [Enlace video ](URL "https://youtu.be/NdOcGsv3BD0")
+* [Enlace video ](URL https://youtu.be/NdOcGsv3BD0)
