@@ -82,7 +82,7 @@
             <p> <li class="list-group">{{ h.text }}</li> </p>
           {% endfor %}
         </ul>
-          {% if user %}
+          {% if user.is_authenticated  %}
 
             <a  class="btn btn-primary" id='ide' onclick="select({{ id }})" href="/{{ user }}/{{ id }}"> Seleccionar </a>
           {% endif %}

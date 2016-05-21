@@ -107,6 +107,7 @@ def show_aloj_id_ingles(reuqest,id):
     return HttpResponse("<h1>"+name+"</h1>"+body+phone+"<a href="+web+">"+name+"</a>"+"</br>"+address+"</br>"+country+"</br><img src="+url+"></img>")
 
 def show_userxml(request,usuario):
+
     if usuario == "Diego":
         f = open('userdiego.xml', 'r')
 
@@ -115,6 +116,8 @@ def show_userxml(request,usuario):
 
     elif usuario =="Isra":
         f = open('userisra.xml', 'r')
+    else:
+        return HttpResponse("Not Found")
     xml=f.read()
     return HttpResponse(xml,content_type='text/xml')
 
@@ -123,6 +126,8 @@ def show_aloj_id(request,ide):
     pathi=request.path+"/xmlingles"
     try:
         hotel=Hotel.objects.get(id=ide)
+        print hotel.stars
+        print hotel.tipo
     except Hotel.DoesNotExist:
             context={'name': ""}
             return render_to_response('alojid.html',context);
@@ -137,7 +142,13 @@ def show_aloj_id(request,ide):
         comment=Comment(hid=hotel.id,com=hotel,text=value)
         comment.save()
     listcoms=Comment.objects.filter(hid=hotel.id)
-    us=PagUser.objects.get(user=request.user.username)
+    
+    try:
+        us=PagUser.objects.get(user=request.user.username)
+    except PagUser.DoesNotExist:
+        context = {'lista':listimages[0:5],'condicion':"",'url':hotel.url,'name':hotel.name,'address':hotel.address,'body':hotel.body,'comentarios':listcoms,'type':hotel.tipo,'stars':hotel.stars,'pathf':pathf,'pathi':pathi,'id':ide,'email':hotel.email,
+                    'phone':hotel.phone}
+        return render_to_response('alojid.html', context,context_instance = RequestContext(request))
     context = {'lista':listimages[0:5],'condicion':"",'url':hotel.url,'name':hotel.name,'address':hotel.address,'body':hotel.body,'comentarios':listcoms,'type':hotel.tipo,'stars':hotel.stars,'pathf':pathf,'pathi':pathi,'id':ide,'email':hotel.email,
                 'phone':hotel.phone,'color':us.color,'size':us.size}
     return render_to_response('alojid.html', context,context_instance = RequestContext(request))
@@ -246,7 +257,7 @@ def show_hotels(request,usuario):
             title=""
 
 
-    context={'lista':listhotels[0:2],'color':value,'usuario':usuario,'size':siz}
+    context={'lista':listhotels,'color':value,'usuario':usuario,'size':siz}
     return render_to_response('user.html', context, context_instance = RequestContext(request))
 
 def more(request):
@@ -293,6 +304,9 @@ def main(request):
         fil = urllib2.urlopen( 'http://cursosweb.github.io/etc/alojamientos_es.xml')
         theParser.parse(fil)
     listauser=PagUser.objects.all()
+    for hotel in lista:
+        if hotel.id == 7:
+            print hotel.name
     template = get_template("index.html")
     context = {'lista':lista[0:10],'user':request.user.username,'listausers':listauser,'condicion':""}
     if request.user.is_authenticated():
