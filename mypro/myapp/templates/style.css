@@ -1,0 +1,18 @@
+
+*{
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+
+#header img {
+	width: 110em;
+  height: 20em
+}
+.scrollable {
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.height-25em {
+    height: 25em;
+}

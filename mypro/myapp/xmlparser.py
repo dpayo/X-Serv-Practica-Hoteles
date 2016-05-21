@@ -30,6 +30,8 @@ class myContentHandler(ContentHandler):
         self.img=""
         self.tipo=""
         self.body=""
+        self.email=""
+        self.phone=""
         self.recimg=None
         self.is_star=False;
         self.is_img=False;
@@ -38,7 +40,7 @@ class myContentHandler(ContentHandler):
 
         self.theContent=name
         if name =='basicData':
-            self.record = Hotel(name="", url="",body="", address="",source="",stars="",tipo="")
+            self.record = Hotel(name="", url="",body="", address="",source="",stars="",tipo="",numbercom=0,email="",phone="")
 
         if name =="item":
             if attrs['name']== "SubCategoria":
@@ -52,6 +54,12 @@ class myContentHandler(ContentHandler):
                 self.recimg=Image(hid=0,img=self.record,url="")
 
     def endElement (self, name):
+            if self.theContent=='phone':
+                self.record.phone=self.phone;
+                self.record.save()
+            if self.theContent =='email':
+                self.record.email=self.email;
+                self.record.save()
             if self.theContent=='body':
                 self.record.body=self.body;
                 self.record.save()
@@ -73,9 +81,7 @@ class myContentHandler(ContentHandler):
                 self.recimg.hid=self.record.id;
                 self.record.save()
                 self.recimg.save()
-                print self.recimg.img.id
-                print self.record.id
-                print self.recimg.url
+
                 self.is_img=False
             if self.theContent == 'title':
                 self.record.name=self.titulo;
@@ -94,9 +100,13 @@ class myContentHandler(ContentHandler):
 
             #record.save()
     def characters (self, chars):
+        if self.theContent == 'phone':
+            self.phone=chars
+        if self.theContent == 'email':
+            self.email=chars
         if self.theContent == 'body':
             self.body=chars
-            print self.body
+
         if self.theContent == 'title':
             self.titulo=chars
 

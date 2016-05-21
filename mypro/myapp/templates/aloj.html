@@ -15,15 +15,19 @@
         }
 
       </style>
-    </head>
   </head>
   <body>
     <div id="header">
       <img src="http://datos.madrid.es/FWProjects/egob/nuevoMadrid/secciones/DatosAbiertos_1400X351.png"></img>
     </div>
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="/">Home</a></li>
+      <li><a href="/alojamientos">Alojamientos</a></li>
+      <li><a href="/about">About</a></li>
 
+    </ul>
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
           <div class="panel panel-default">
             <div class="panel-body">
               <form action="" method="post">
@@ -40,13 +44,16 @@
             </div>
           </div>
         </div>
-      <div class="col-md-6">
+      <div class="col-md-12">
         <div class="panel panel-default">
           <div class="panel-body scrollable height-25em">
             <h3>Filtrando por : {{ stars }} {{ tipo }}</h3>
+            <ul class="list-group">
             {% for h in lista %}
-              <li><a href= "{{ h.url }}">{{ h.name}}</a></li>
+              <li class="list-group"><a href= "{{ h.url }}">{{ h.name}}</a> <a href="/alojamientos/{{ h.id }}">Más info.</a></li>
+
             {% endfor %}
+          </ul>
           </div>
         </div>
       </div>

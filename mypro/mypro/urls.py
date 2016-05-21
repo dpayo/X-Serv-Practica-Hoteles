@@ -18,10 +18,13 @@ from django.contrib import admin
 from myapp import views
 
 
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$',views.main),
     url(r'^more$',views.more),
+    url(r'^about$',views.about),
+    url(r'^(.*)/moreuser$',views.moreuser),
     url(r'^alojamientos/(\d+)$',views.show_aloj_id),
     url(r'^alojamientos/(\d+)/xmlingles$',views.show_aloj_id_ingles),
     url(r'^alojamientos/(\d+)/xmlfrances$',views.show_aloj_id_frances),
@@ -29,7 +32,8 @@ urlpatterns = [
     url(r'^login', 'django.contrib.auth.views.login'),
     url(r'^logout', 'django.contrib.auth.views.logout', {'next_page': '/'}),
     url(r'^(.*)/xml$',views.show_userxml),
+    url(r'^(.*)/(\d+)$', views.add_hotels),
     url(r'^(.*)$',views.show_hotels),
-    
+
 
 ]

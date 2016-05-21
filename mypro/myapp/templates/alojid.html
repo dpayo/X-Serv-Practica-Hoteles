@@ -6,11 +6,28 @@
     <link rel="stylesheet"  type="text/css" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+     <script src="{% static 'js/hotels.js' %}"></script>
+     <style>
+       body{
+         background-color: {{ color }}
+       }
+       body{
+         font-size: {{size}}
+       }
+
+     </style>
   </head>
   <body>
     <div id="header">
       <img src="http://datos.madrid.es/FWProjects/egob/nuevoMadrid/secciones/DatosAbiertos_1400X351.png"></img>
     </div>
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="/">Home</a></li>
+      <li><a href="/alojamientos">Alojamientos</a></li>
+      <li><a href="/about">About</a></li>
+
+    </ul>
     <div class="container-fluid">
       <div>
           {% if user.is_authenticated %}
@@ -27,32 +44,48 @@
     </div>
 
     <div class"col-md-9 well well-sm">
-      <h3> {{ name }}</h3>
-      <li><a href= "{{ url }}">{{name}}</a></li>
-      <li>{{ address }}</li>
-      <li> {{type}}</li>
-      <li> {{stars}}</li>
+      <h3 id='name'> {{ name }}</h3>
+      {% if name != "" %}
+        <ul class="list-group">
+        <li class="list-group"><a href= "{{ url }}">{{name}}</a></li>
+        <li class="list-group">{{ address }}</li>
+        <li class="list-group"> {{type}}</li>
+        <li class="list-group"> {{stars}}</li>
+        <li class="list-group"><a href="{{ email }}" >{{email}}</a></li>
+        <li class="list-group" > {{ phone }}</li>
+      </ul>
+      {% endif %}
   </div>
       <div class="row">
+          <ul class="list-group">
           {% for h in lista %}
             {% if h.source != condicion %}
 
               <img class="img-thumbnail thumbnail col-md-3" src="{{ h.url }}"></img>
             {% else %}
-              <li> No hay imagenes para mostrar </li>
+              <li class="list-group"> No hay imagenes para mostrar </li>
             {% endif %}
+
         {% endfor %}
+
       </div>
-    <div class="col-md-12">
-      <li>{{ body |safe }}</li>
-    </div>
+      <div class="col-md-12">
+        <li class="list-group">{{ body |safe }}</li>
+      </div>
+    </ul>
   <div class="row">
     <div class="col-md-12 well well-sm panel panel-default">
       <div class="panel-body">
         <h3> Comentarios: </h3>
+          <ul class="list-group">
           {% for h in comentarios %}
-            <p> <li>{{ h.text }}</li> </p>
+            <p> <li class="list-group">{{ h.text }}</li> </p>
           {% endfor %}
+        </ul>
+          {% if user %}
+
+            <a  class="btn btn-primary" id='ide' onclick="select({{ id }})" href="/{{ user }}/{{ id }}"> Seleccionar </a>
+          {% endif %}
       </div>
     </div>
   </div>

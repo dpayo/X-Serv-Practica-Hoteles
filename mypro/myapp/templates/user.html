@@ -20,6 +20,12 @@
     <div id="header">
       <img src="http://datos.madrid.es/FWProjects/egob/nuevoMadrid/secciones/DatosAbiertos_1400X351.png"></img>
     </div>
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="/">Home</a></li>
+      <li><a href="/alojamientos">Alojamientos</a></li>
+      <li><a href="/about">About</a></li>
+
+    </ul>
     <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
@@ -42,17 +48,26 @@
   </div>
   <div class="row">
     <div class"col-md-12 well well-sm">
-      {% for h in lista %}
-          <li><a href= "{{ h.hotel.url }}">{{h.hotel.name}}</a></li>
-          <li>{{ h.hotel.address }}</li>
-          {% if h.hotel.source != "" %}
-            <img class="thumbnail" src="{{ h.hotel.source }}"></img>
-          {% endif %}
-          <li> {{ h.date }}</li>
-          <li><a href="/alojamientos/{{ h.hotel.id }}">Más información </li>
+      {% if lista|length > 0 %}
+        {% for h in lista %}
+            <ul class="list-group">
+              <li class="list-group"><a href= "{{ h.hotel.url }}">{{h.hotel.name}}</a></li>
+              <li class="list-group">{{ h.hotel.address }}</li>
+              {% if h.hotel.source != "" %}
+              <li class="list-group"> <img class="thumbnail" src="{{ h.hotel.source }}"></img></li>
+              {% endif %}
+              <li class="list-group"> {{ h.date }}</li>
+              <li class="list-group"><a href="/alojamientos/{{ h.hotel.id }}">Más información </a></li>
+            </ul>
       {% endfor %}
+    {% else %}
+        <h3> No hay hoteles seleccionados</h3>
+    {% endif %}
     </div>
   </div>
+  {% if list_len  > 10 %}
+    <a href=/{{usuario}}/moreuser> Más </a>
+  {% endif %}
 </div>
   </body>
 </html>

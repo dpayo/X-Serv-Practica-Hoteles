@@ -11,7 +11,9 @@ class Hotel (models.Model):
     source= models.URLField(max_length=300,default="")
     stars =models.CharField(max_length=300,default="")
     tipo=models.CharField(max_length=300,default="")
-
+    numbercom=models.IntegerField(default=0)
+    email=models.URLField(max_length=200,default="")
+    phone=models.CharField(max_length=200,default="")
 class PagUser (models.Model):
     user=models.CharField(max_length=300,default="")
     title= models.CharField(max_length=300,default="")

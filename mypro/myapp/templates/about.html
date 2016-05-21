@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    {% load staticfiles %}
+    <link rel="stylesheet"  type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+  </head>
+  <body>
+    <div id="header">
+      <img src="http://datos.madrid.es/FWProjects/egob/nuevoMadrid/secciones/DatosAbiertos_1400X351.png"></img>
+    </div>
+
+    <div class="panel panel-default">
+      <!-- Default panel contents -->
+      <div class="panel-heading">PAGINA DE INFORMACIÓN</div>
+      <div class="panel-body">
+        <h3> Recursos </h3>
+        <p> Información detallada de los recursos: </p>
+      </div>
+      <ul class="list-group">
+        <li class="list-group-item"> /</li>
+        <li class="list-group-item"> /alojamientos</li>
+        <li class="list-group-item"> /alojamientos/id</li>
+        <li class="list-group-item"> /usuario</li>
+        <li class="list-group-item"> /usuario/xml</li>
+        <li class="list-group-item"> /about</li>
+      </ul>
+      <div class="panel panel-default">
+        <div class="panel-body">
+            <ol>
+              <li> Partimos de la aplicación sin hoteles en la página principal, tenemos 3 usuarios añadidos
+              los cuáles en la página /alojamientos/id escribiran comentarios y podrán seleccionar hoteles
+              que aparecerán en sus paginas personales /ussuario</li>
+              <li> Cada usuario si esta registrado podrá cambiar el color del fondo de la aplicacion, el tamaño
+              de la fuente y poner el título a tu pagina personal</li>
+              <li> En /alojamientos aparecen todos los alojamientos dónde se podra filtrar por número de estrellas o tipo</li>
+            </ol>
+        </div>
+      </div>
+      <p>Diego Payo Martinez SAT</p>
+    </div>
+  </body>
+</html>
